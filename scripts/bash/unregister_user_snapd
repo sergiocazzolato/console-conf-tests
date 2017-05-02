@@ -1,0 +1,4 @@
+#!/bin/bash
+cp /var/lib/snapd/state.json /var/lib/snapd/state.json.old
+cat /var/lib/snapd/state.json.old | jq -r '.data.auth.users=[]' > /var/lib/snapd/state.json
+systemctl restart snapd.service snapd.socket

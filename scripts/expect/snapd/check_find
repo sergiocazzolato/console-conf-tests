@@ -1,0 +1,7 @@
+send "snap find hello \n"
+expect {
+    -re "hello-world(.*)canonical" {
+    } default {
+        exit 1
+    }
+}

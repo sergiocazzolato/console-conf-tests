@@ -1,0 +1,4 @@
+summary: Ensure console conf shows all the screen in the happy path
+
+execute: |
+    expect -f task.exp

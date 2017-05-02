@@ -1,0 +1,163 @@
+project: console-conf-tests
+
+environment:
+    #PATHS
+    PROJECT_PATH: /home/test/console-conf-tests
+    BASH: $PROJECT_PATH/scripts/bash
+    CCONF: $PROJECT_PATH/scripts/expect/console_conf
+    WELCOME: $PROJECT_PATH/scripts/expect/welcome
+    NETWORK: $PROJECT_PATH/scripts/expect/network
+    IDENTITY: $PROJECT_PATH/scripts/expect/identity
+    FINISH: $PROJECT_PATH/scripts/expect/finish
+    SNAPD: $PROJECT_PATH/scripts/expect/snapd
+    #INFO
+    REGISTER_USER_USERNAME: sergio-j-cazzolato
+    REGISTER_USER_EMAIL: sergio.cazzolato@canonical.com
+    NOEXIST_USER_EMAIL: noexist@canonical.com
+    NOKEY_USER_EMAIL: indioss@hotmail.com
+backends:
+    linode:
+        key: "$(HOST: echo $SPREAD_LINODE_KEY)"
+        halt-timeout: 2h
+        systems:
+            - ubuntu-14.04-64:
+                kernel: GRUB 2
+                workers: 2
+            - ubuntu-16.04-64:
+                kernel: GRUB 2
+                workers: 2
+            - ubuntu-16.04-32:
+                kernel: GRUB 2
+                workers: 2
+            - ubuntu-core-16-64:
+                kernel: Direct Disk
+                image: ubuntu-16.04-64
+                workers: 2
+    qemu:
+        environment:
+            APT_PROXY: "$(HOST: echo $APT_PROXY)"
+        systems:
+            - ubuntu-14.04-32:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-14.04-64:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.04-32:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.04:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.04-64:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-core-16-64:
+                image: ubuntu-16.04-64
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.10-64:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-17.04-64:
+                username: ubuntu
+                password: ubuntu
+    autopkgtest:
+        type: adhoc
+        allocate: |
+            echo "Allocating ad-hoc $SPREAD_SYSTEM"
+            if [ -z "${ADT_ARTIFACTS}" ]; then
+                FATAL "adhoc only works inside autopkgtest"
+                exit 1
+            fi
+            echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/99-spread-users
+            ADDRESS localhost:22
+        discard: |
+            echo "Discarding ad-hoc $SPREAD_SYSTEM"
+        systems:
+            - ubuntu-14.04-amd64:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-14.04-i386:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.04-amd64:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.04-i386:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.04-ppc64el:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.04-armhf:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.10-amd64:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.10-i386:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.10-ppc64el:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-16.10-armhf:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-17.04-amd64:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-17.04-i386:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-17.04-ppc64el:
+                username: ubuntu
+                password: ubuntu
+            - ubuntu-17.04-armhf:
+                username: ubuntu
+                password: ubuntu
+    external:
+        type: adhoc
+        environment:
+            SPREAD_EXTERNAL_ADDRESS: "$(HOST: echo ${SPREAD_EXTERNAL_ADDRESS:-localhost:8022})"
+            MANAGED_DEVICE: "true"
+        allocate: |
+            ADDRESS $SPREAD_EXTERNAL_ADDRESS
+        systems:
+            - ubuntu-core-16-64:
+                environment:
+                    TRUST_TEST_KEYS: "false"
+                username: test
+                password: ubuntu
+            - ubuntu-core-16-32:
+                environment:
+                    TRUST_TEST_KEYS: "false"
+                username: test
+                password: ubuntu
+            - ubuntu-core-16-arm-64:
+                username: test
+                password: ubuntu
+            - ubuntu-core-16-arm-32:
+                username: test
+                password: ubuntu
+
+path: /home/test/console-conf-tests
+
+exclude:
+    - .git
+
+prepare: |
+    snap install --devmode expect
+    snap install --devmode jq
+
+restore: |
+    rm -rf /home/test/console-conf-tests
+
+prepare-each: |
+    echo "Preparing test"
+
+suites:
+    tests/:
+        summary: Console conf tests
+

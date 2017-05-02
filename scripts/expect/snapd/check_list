@@ -1,0 +1,7 @@
+send "snap list \n"
+expect {
+    -re "core(.*)canonical" {
+    } default {
+        exit 1
+    }
+}

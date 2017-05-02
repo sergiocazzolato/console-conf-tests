@@ -1,0 +1,10 @@
+#!/bin/bash
+
+declare -a arr=("group" "gshadow" "passwd" "shadow" "subgid" "subuid")
+
+for i in "${arr[@]}"
+do
+   sed -i.bak "/$1:/d" /var/lib/extrausers/$i
+done
+
+sudo sed -i '1s/^/\n/' /var/lib/extrausers/passwd

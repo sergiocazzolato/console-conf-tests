@@ -1,0 +1,13 @@
+summary: Ensure console does not register the user in case the console conf is stopped
+
+prepare: |
+    $BASH/delete_extrauser $REGISTER_USER_USERNAME
+    $BASH/unregister_user_snapd
+
+execute: |
+    expect -f task.exp
+    $BASH/check_no_registered_user_snapd
+
+restore: |
+    $BASH/restore_user_snapd
+    $BASH/restore_extrauser

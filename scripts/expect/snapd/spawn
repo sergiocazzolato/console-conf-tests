@@ -1,0 +1,3 @@
+log_file -noappend -a /home/test/bash.log
+
+spawn /bin/bash
