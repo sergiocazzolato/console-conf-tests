@@ -1,3 +1,4 @@
 #!/bin/bash
+systemctl stop snapd.service snapd.socket
 mv /var/lib/snapd/state.json.old /var/lib/snapd/state.json
-systemctl restart snapd.service snapd.socket
+systemctl start snapd.service snapd.socket

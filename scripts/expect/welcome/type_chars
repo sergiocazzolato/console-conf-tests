@@ -1,0 +1,9 @@
+set timeout 3
+
+expect {
+    "Ubuntu Core" {
+        send "asdfg\t:_ %&/+*<@"
+    } default {
+        exit 1
+    }
+}

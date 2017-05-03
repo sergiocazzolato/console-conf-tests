@@ -9,5 +9,5 @@ execute: |
     $BASH/check_no_registered_user_snapd
 
 restore: |
-    $BASH/restore_user_snapd
     $BASH/restore_extrauser
+    $BASH/restore_user_snapd

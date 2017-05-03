@@ -10,5 +10,5 @@ execute: |
     expect -f task_2.exp
 
 restore: |
-    $BASH/restore_user_snapd
     $BASH/restore_extrauser
+    $BASH/restore_user_snapd
