@@ -1,5 +1,3 @@
-set timeout 3
-
 expect {
     "Ubuntu Core" {
         exit 0

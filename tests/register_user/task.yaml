@@ -1,14 +1,14 @@
 summary: Ensure console conf register a user
 
 prepare: |
-    $BASH/delete_extrauser $REGISTER_USER_USERNAME
-    $BASH/unregister_user_snapd
+    $HELPERS/delete_extrauser $REGISTER_USER_USERNAME
+    $HELPERS/unregister_user_snapd
 
 execute: |
     expect -f task.exp
-    $BASH/check_user_registered_snapd $REGISTER_USER_USERNAME $REGISTER_USER_EMAIL
+    $HELPERS/check_user_registered_snapd $REGISTER_USER_USERNAME $REGISTER_USER_EMAIL
     expect -f task_2.exp
 
 restore: |
-    $BASH/restore_extrauser
-    $BASH/restore_user_snapd
+    $HELPERS/restore_extrauser
+    $HELPERS/restore_user_snapd

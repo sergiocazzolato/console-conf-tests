@@ -1,7 +1,6 @@
 expect {
     "Profile setup" {
-        send $env(REGISTER_USER_EMAIL)
-        send "\t\r"
+        exit 0
     } default {
         exit 1
     }

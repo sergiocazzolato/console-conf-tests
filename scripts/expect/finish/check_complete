@@ -1,5 +1,3 @@
-set timeout 20
-
 expect {
     -re "(.*)Configuration Complete(.*)This device is registered to $env(REGISTER_USER_EMAIL)(.*)ssh $env(REGISTER_USER_USERNAME)@" {
         send "\r"

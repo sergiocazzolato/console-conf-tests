@@ -1,0 +1,2 @@
+#!/bin/bash
+cp /etc/netplan/00-snapd-config.yaml /etc/netplan/00-snapd-config.yaml.bak

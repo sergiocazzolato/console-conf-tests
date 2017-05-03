@@ -1,0 +1,20 @@
+#!/bin/bash
+
+LAST_MODIFICATION=$($HELPERS/get_netplan_last_modification)
+if [ $LAST_MODIFICATION -le $1 ]; then
+    exit 1
+fi
+
+if [ $ETHERNET_AVAILABLE == "true" ]; then
+    if [ $($HELPERS/get_netplan_value ethernets.$ETHERNET_IFACE.dhcp4) == true ]; then
+        exit 0
+    else
+        exit 1
+    fi
+else
+    if [ $($HELPERS/get_netplan_value wifis.$WIFI_IFACE.dhcp4) == true ] && [ $(echo $($HELPERS/get_netplan_value wifis.$WIFI_IFACE) | grep -c $WIFI_SSID) == 1 ]; then
+        exit 0
+    else
+        exit 1
+    fi
+fi

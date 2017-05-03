@@ -1,13 +1,13 @@
 summary: Ensure console shows error when the user is not registered
 
 prepare: |
-    $BASH/delete_extrauser $REGISTER_USER_USERNAME
-    $BASH/unregister_user_snapd
+    $HELPERS/delete_extrauser $REGISTER_USER_USERNAME
+    $HELPERS/unregister_user_snapd
 
 execute: |
     expect -f task.exp
-    $BASH/check_no_registered_user_snapd
+    $HELPERS/check_no_registered_user_snapd
 
 restore: |
-    $BASH/restore_extrauser
-    $BASH/restore_user_snapd
+    $HELPERS/restore_extrauser
+    $HELPERS/restore_user_snapd

@@ -3,18 +3,36 @@ project: console-conf-tests
 environment:
     #PATHS
     PROJECT_PATH: /home/test/console-conf-tests
-    BASH: $PROJECT_PATH/scripts/bash
+    HELPERS: $PROJECT_PATH/scripts/bash
     CCONF: $PROJECT_PATH/scripts/expect/console_conf
     WELCOME: $PROJECT_PATH/scripts/expect/welcome
     NETWORK: $PROJECT_PATH/scripts/expect/network
     IDENTITY: $PROJECT_PATH/scripts/expect/identity
     FINISH: $PROJECT_PATH/scripts/expect/finish
     SNAPD: $PROJECT_PATH/scripts/expect/snapd
-    #INFO
+    #USERS
     REGISTER_USER_USERNAME: sergio-j-cazzolato
     REGISTER_USER_EMAIL: sergio.cazzolato@canonical.com
     NOEXIST_USER_EMAIL: noexist@canonical.com
     NOKEY_USER_EMAIL: indioss@hotmail.com
+    #NETWORK
+    ETHERNET_AVAILABLE: true
+    ETHERNET_IFACE: eth0
+    ETHERNET_SUBNET:
+    ETHERNET_ADDRESS:
+    ETHERNET_GATEWAY:
+    ETHERNET_DNS:
+    ETHERNET_SEARCH_DOMAINS:
+    WIFI_AVAILABLE: true
+    WIFI_IFACE: wlan0
+    WIFI_SSID:
+    WIFI_PASSWORD:
+    WIFI_SUBNET:
+    WIFI_ADDRESS:
+    WIFI_GATEWAY:
+    WIFI_DNS:
+    WIFI_SEARCH_DOMAINS:
+
 backends:
     linode:
         key: "$(HOST: echo $SPREAD_LINODE_KEY)"

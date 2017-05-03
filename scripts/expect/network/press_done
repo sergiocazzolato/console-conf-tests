@@ -1,5 +1,3 @@
-set timeout 10
-
 expect {
     "Network connections" {
         send "\t\r"

@@ -1,0 +1,2 @@
+#!/bin/bash
+$HELPERS/yaml2json /etc/netplan/00-snapd-config.yaml | jq ".network.$1"

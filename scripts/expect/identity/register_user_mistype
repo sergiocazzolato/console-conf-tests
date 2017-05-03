@@ -1,4 +1,3 @@
-set timeout 20
 expect {
     "Profile setup" {
         send $env(NOEXIST_USER_EMAIL)

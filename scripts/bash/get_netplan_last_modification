@@ -1,0 +1,2 @@
+#!/bin/bash
+stat -c %Y /etc/netplan/00-snapd-config.yaml
