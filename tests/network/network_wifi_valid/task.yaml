@@ -1,0 +1,14 @@
+summary: Check the initial ethernet network cofiguration with ipv4 dhcp enabled
+
+execute: |
+    if [ $WIFI_READY == "true" ]; then
+        if [ -z "$WIFI_SSID" ] || [ -z "$WIFI_PASSWORD" ]; then
+            echo "Variables WIFI_SSID and WIFI_PASSWORD have to be defined"
+            exit 1
+        fi
+        $HELPERS/delete_netplan_access_point
+        INITIAL_TIME=$($HELPERS/get_netplan_last_modification)
+        expect -f task.exp
+        $HELPERS/check_netplan_modified $INITIAL_TIME
+        expect -f task_2.exp
+    fi

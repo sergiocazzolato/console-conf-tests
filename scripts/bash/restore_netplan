@@ -1,3 +1,4 @@
 #!/bin/bash
+
 mv /etc/netplan/00-snapd-config.yaml.bak /etc/netplan/00-snapd-config.yaml
 netplan generate --root /

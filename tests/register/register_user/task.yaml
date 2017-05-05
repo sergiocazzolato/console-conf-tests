@@ -1,14 +1,6 @@
 summary: Ensure console conf register a user
 
-prepare: |
-    $HELPERS/delete_extrauser $REGISTER_USER_USERNAME
-    $HELPERS/unregister_user_snapd
-
 execute: |
     expect -f task.exp
     $HELPERS/check_user_registered_snapd $REGISTER_USER_USERNAME $REGISTER_USER_EMAIL
     expect -f task_2.exp
-
-restore: |
-    $HELPERS/restore_extrauser
-    $HELPERS/restore_user_snapd

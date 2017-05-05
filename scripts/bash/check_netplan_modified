@@ -1,0 +1,6 @@
+#!/bin/bash
+
+LAST_MODIFICATION=$($HELPERS/get_netplan_last_modification)
+if [ $LAST_MODIFICATION -le $1 ]; then
+    exit 1
+fi
