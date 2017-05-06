@@ -1,3 +1,4 @@
-set  timeout 30
+set timeout 30
+set stty_init "raw cols 240 rows 60"
 
 spawn /usr/bin/console-conf
