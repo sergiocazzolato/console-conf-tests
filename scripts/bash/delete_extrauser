@@ -2,6 +2,8 @@
 
 declare -a arr=("group" "gshadow" "passwd" "shadow" "subgid" "subuid")
 
+sed -i '/^\s*$/d' /var/lib/extrausers/passwd
+
 for i in "${arr[@]}"
 do
    sed -i.bak "/$1:/d" /var/lib/extrausers/$i

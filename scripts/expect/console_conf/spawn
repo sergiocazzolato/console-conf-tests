@@ -1,4 +1,4 @@
 set timeout 30
-set stty_init "raw cols 240 rows 60"
+set stty_init "raw speed 38400 rows 30 columns 100"
 
-spawn /usr/bin/console-conf
+spawn sudo /usr/bin/console-conf

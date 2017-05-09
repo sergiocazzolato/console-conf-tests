@@ -106,5 +106,16 @@ suites:
         restore-each: |
             $HELPERS/restore_netplan
 
+    tests/e2e/:
+        summary: Tests for e2e scenarios
+        prepare-each: |
+            $HELPERS/delete_extrauser $REGISTER_USER_USERNAME
+            $HELPERS/unregister_user_snapd
+            $HELPERS/save_netplan
+        restore-each: |
+            $HELPERS/restore_netplan
+            $HELPERS/restore_extrauser
+            $HELPERS/restore_user_snapd
+
     tests/welcome/:
         summary: Tests for welcome screen
