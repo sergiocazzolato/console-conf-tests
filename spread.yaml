@@ -84,6 +84,7 @@ prepare: |
     snap install --devmode jq
 
 restore: |
+    snap remove expect jq
     rm -rf /home/test/console-conf-tests
 
 prepare-each: |
