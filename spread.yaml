@@ -50,7 +50,7 @@ backends:
                     ETHERNET_POSITION: "$(HOST: echo ${ETHERNET_POSITION:-1})"
                     WIFI_READY: "$(HOST: echo ${WIFI_READY:-false})"
                     WIFI_IFACE: "$(HOST: echo ${WIFI_IFACE:-wlan0})"
-                    WIFI_POSITION: "$(HOST: echo ${WIFI_POSITION:-1})"
+                    WIFI_POSITION: "$(HOST: echo ${WIFI_POSITION:-2})"
                 username: test
                 password: ubuntu
             - ubuntu-core-16-arm-64:
