@@ -2,5 +2,7 @@
 
 LAST_MODIFICATION=$($HELPERS/get_netplan_last_modification)
 if [ $LAST_MODIFICATION -le $1 ]; then
+	echo "Last modification $LAST_MODIFICATION"
+	echo "Current modification $1"
     exit 1
 fi
