@@ -1,6 +1,6 @@
 send "snap find hello \n"
 expect {
-    -re "hello-world(.*)Canonical" {
+    -re "hello-world(.*)(C|c)anonical" {
     } default {
         exit 1
     }

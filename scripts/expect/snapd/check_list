@@ -1,6 +1,6 @@
 send "snap list \n"
 expect {
-    -re "core(.*)canonical" {
+    -re "core(.*)(C|c)anonical" {
     } default {
         exit 1
     }
