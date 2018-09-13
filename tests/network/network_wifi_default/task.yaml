@@ -10,7 +10,7 @@ execute: |
         [ $(echo $($HELPERS/get_netplan_value wifis.$WIFI_IFACE) | grep -c $WIFI_SSID) -eq 1 ]
 
         # Check there is an address for the wifi interface
-        for i in {1..5}; do
+        for i in $(seq 5); do
             if [ $(ifconfig $WIFI_IFACE | grep -c "inet addr:") -ge 1 ]; then
                 exit 0
             fi

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in {1..5}; do
+for i in $(seq 5); do
 	LAST_MODIFICATION=$($HELPERS/get_netplan_last_modification)
 	if [ $LAST_MODIFICATION -le $1 ]; then
 		echo "Change not done yet, retrying ..."
