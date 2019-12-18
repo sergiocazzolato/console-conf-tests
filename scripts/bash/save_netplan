@@ -1,3 +1,5 @@
 #!/bin/bash
 
-cp /etc/netplan/00-snapd-config.yaml /etc/netplan/00-snapd-config.yaml.bak
+if [ -f /etc/netplan/00-snapd-config.yaml ]; then
+	cp /etc/netplan/00-snapd-config.yaml /etc/netplan/00-snapd-config.yaml.bak
+fi
