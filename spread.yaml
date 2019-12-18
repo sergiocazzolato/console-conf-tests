@@ -93,6 +93,8 @@ prepare-each: |
 suites:
     tests/register/:
         summary: Tests for registration
+        prepare: |
+            $HELPERS/clean_netplan
         prepare-each: |
             $HELPERS/delete_extrauser $REGISTER_USER_USERNAME
             $HELPERS/unregister_user_snapd
@@ -102,6 +104,8 @@ suites:
 
     tests/network/:
         summary: Tests for network configuration
+        prepare: |
+            $HELPERS/clean_netplan
         prepare-each: |
             $HELPERS/save_netplan
         restore-each: |
@@ -109,6 +113,8 @@ suites:
 
     tests/e2e/:
         summary: Tests for e2e scenarios
+        prepare: |
+            $HELPERS/clean_netplan
         prepare-each: |
             $HELPERS/delete_extrauser $REGISTER_USER_USERNAME
             $HELPERS/unregister_user_snapd
