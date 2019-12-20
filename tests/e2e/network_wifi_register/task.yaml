@@ -1,5 +1,7 @@
 summary: Configure the wifi with valid data and register a user
 
+priority: 1000
+
 execute: |
     if [ $WIFI_READY == "true" ]; then
         $HELPERS/check_wifi_variables
