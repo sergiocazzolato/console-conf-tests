@@ -1,5 +1,7 @@
 summary: Check the network cofiguration with ipv6 enabled with dhcp
 
+manual: true
+
 execute: |
     if [ $ETHERNET_READY == "true" ]; then
         expect -f task.exp
