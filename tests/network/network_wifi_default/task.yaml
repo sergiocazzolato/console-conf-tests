@@ -7,7 +7,7 @@ execute: |
         $HELPERS/check_netplan_modified $INITIAL_TIME
 
         # Check wifi ssid is registered on the netplan config
-        [ $(echo $($HELPERS/get_netplan_value wifis.$WIFI_IFACE) | grep -c $WIFI_SSID) -eq 1 ]
+        [ "$(echo $($HELPERS/get_netplan_value wifis.$WIFI_IFACE) | grep -c $WIFI_SSID)" = "1" ]
 
         # Check there is an address for the wifi interface
         for i in $(seq 5); do
