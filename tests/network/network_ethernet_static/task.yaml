@@ -1,5 +1,7 @@
 summary: Check the initial ethernet network cofiguration with ipv4 dhcp enabled
 
+manual: true
+
 execute: |
     if [ $ETHERNET_READY == "true" ]; then
         export SUBNET=$($HELPERS/get_subnet $ETHERNET_IFACE)
